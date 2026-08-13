@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ops-black text-ops-paper font-body antialiased;
+    background-image: linear-gradient(rgba(233, 230, 216, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(233, 230, 216, 0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Visible keyboard focus everywhere — accessibility floor */
+  :focus-visible {
+    outline: 2px solid theme('colors.ops.amber');
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: theme('colors.ops.amber');
+    color: theme('colors.ops.black');
+  }
+
+  /* Slim, low-contrast scrollbar that fits the console aesthetic */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme('colors.ops.black');
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.ops.border');
+    border-radius: 0;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] font-mono uppercase tracking-[0.18em] text-ops-muted;
+  }
+
+  .panel {
+    @apply bg-ops-panel border border-ops-border;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-ops-amber text-ops-black font-display font-semibold
+      text-sm uppercase tracking-wide px-4 py-2.5 hover:bg-[#e6bc52] transition-colors disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent border border-ops-border text-ops-paper font-display font-semibold
+      text-sm uppercase tracking-wide px-4 py-2.5 hover:border-ops-amber hover:text-ops-amber transition-colors disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .field-label {
+    @apply block text-[11px] font-mono uppercase tracking-[0.14em] text-ops-muted mb-1.5;
+  }
+
+  .field-input {
+    @apply w-full bg-ops-black border border-ops-border text-ops-paper px-3 py-2.5 text-sm
+      focus:border-ops-amber focus:outline-none transition-colors placeholder:text-ops-muted/60;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-mono uppercase tracking-wide border;
+  }
+}
